@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Fornecedores";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_Aguarde")
+
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <a asp-area="Cadastros" asp-controller="Fornecedore" asp-action="Incluir" class="btn btn-default pull-left"><i class="glyphicon glyphicon-plus"></i> Novo Fornecedor</a>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">CADASTRO DE FORNECEDORES</div>
+            <div class="panel-body">
+                <table id="tbgrid" class="table table-hover table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th class="no-sort"></th>
+                            <th class="no-sort"></th>
+                            <th class="text-center">Id</th>
+                            <th class="text-center">Apelido</th>
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">CPF/CNPJ</th>
+                            <th class="text-center">E-Mail</th>
+                        </tr>
+                    </thead>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    <script>
+        colunas = [
+            {
+                "data": "Id",
+                "searchable": false,
+                "sortable": false,
+                "width": "2%",
+                "sClass": "text-center",
+                "render": function (id) {
+                    return "<a href='#' class='btn btn-primary btn-sm showhint' title='Alterar registro'><i class='glyphicon glyphicon-pencil'></i></a>"
+                }
+            },
+
+            {
+                "data": "Id",
+                "searchable": false,
+                "sortable": false,
+                "width": "2%",
+                "sClass": "text-center",
+                "render": function (id) {
+                    return "<a href='#' class='btn btn-danger btn-sm showhint' title='Excluir registro'><i class='glyphicon glyphicon-trash'></i></a>"
+                }
+            },
+
+            {
+                "data": "Id",
+                "width": "2%",
+                "sClass": "text-center"
+            },
+
+            {
+                "data": "Apelido",
+                "width": "28%",
+                "sClass": "text-left"
+            },
+
+            {
+                "data": "Nome",
+                "width": "40%",
+                "sClass": "text-left"
+            },
+
+            {
+                "data": "CpfCnpj",
+                "width": "16%",
+                "sClass": "text-left"
+            },
+
+            {
+                "data": "Email",
+                "width": "20%",
+                "sClass": "text-left"
+            }
+
+        ];
+
+        $(document).ready(function () {
+            ListagemConsulta("tbgrid", urlFornecedores, colunas)
+        });
+
+    </script>
+
+}
+
+
